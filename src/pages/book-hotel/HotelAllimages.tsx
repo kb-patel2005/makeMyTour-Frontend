@@ -11,7 +11,7 @@ export default function HotelAllimages({ id }: { id: string }) {
     const fetchImages = async () => {
       try {
         const res = await axios.get(
-          ` http://localhost:8080/public/${id}/images`
+          `https://makemytour-5axz.onrender.com/public/${id}/images`
         );
         setImages(res.data);
         const flattened = res.data.flat();

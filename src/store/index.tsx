@@ -5,7 +5,7 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 
-const BACKEND_URL = "http://localhost:8080";
+const BACKEND_URL = "https://makemytour-5axz.onrender.com";
 
 type Message = {
   message: string;

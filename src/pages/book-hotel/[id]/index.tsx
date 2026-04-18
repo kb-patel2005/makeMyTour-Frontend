@@ -75,7 +75,6 @@ export default function HotelCard() {
               </div>
             </div>
           </div>
-          {/* ⭐ REVIEWS */}
           {/* <Reviews id={id as string} /> */}
         </div>
       )}

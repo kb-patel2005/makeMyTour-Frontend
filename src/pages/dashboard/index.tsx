@@ -14,7 +14,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchFlights = async () => {
       const token = localStorage.getItem("Authorization")
-      const res = await axios.get(` http://localhost:8080/flight`,{
+      const res = await axios.get(`https://makemytour-5axz.onrender.com/flight`,{
         headers:{
           Authorization: `Bearer ${token}`
         }

@@ -24,7 +24,7 @@ export default function Notification({ trigger }: { trigger: React.ReactNode }) 
     if (!token) return;
     const fetchNotification = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/booking/getIdList`, {
+        const res = await fetch(`https://makemytour-5axz.onrender.com/booking/getIdList`, {
           headers: {
             "Authorization": `Bearer ${token[0]}`
           }

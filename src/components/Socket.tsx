@@ -14,7 +14,7 @@ export const connectSocket = ({
   if (client && client.connected) return;
 
   client = new Client({
-    webSocketFactory: () => new SockJS(" http://localhost:8080/ws"),
+    webSocketFactory: () => new SockJS(" https://makemytour-5axz.onrender.com/ws"),
     onConnect: () => {
       console.log("✅ SOCKET CONNECTED");
       if (onHotel) {

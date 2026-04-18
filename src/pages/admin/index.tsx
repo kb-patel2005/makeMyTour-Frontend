@@ -184,7 +184,7 @@ function HotelForm({ id }: { id?: string }) {
   useEffect(() => {
     if (!id) return;
 
-    axios.get(`http://localhost:8080/hotel/${id}`)
+    axios.get(`https://makemytour-5axz.onrender.com/hotel/${id}`)
       .then((res) => {
         const data = res.data;
         setHotel({
@@ -301,10 +301,10 @@ function HotelForm({ id }: { id?: string }) {
 
     try {
       if (id) {
-        await axios.put(`http://localhost:8080/hotel/${id}`, formData);
+        await axios.put(`https://makemytour-5axz.onrender.com/hotel/${id}`, formData);
         alert("Hotel updated");
       } else {
-        await axios.post(`http://localhost:8080/hotel`, formData);
+        await axios.post(`https://makemytour-5axz.onrender.com/hotel`, formData);
         alert("Hotel created");
       }
     } catch (err) {
@@ -538,9 +538,7 @@ function AddEditFlight({ flight }: { flight: Flight | null }) {
     } else {
       updatedPriceHistory = [newHistoryItem];
     }
-
     let data1;
-
     if (flight) {
       await editflight(
         flight.id,
@@ -556,15 +554,15 @@ function AddEditFlight({ flight }: { flight: Flight | null }) {
         formData.delayReason,
         updatedPriceHistory
       );
-      
-    sendFlightUpdate({
-      id:flight.id,
-      status : formData.status,
-      to: formData.to,
-      from: formData.from,
-      departureTime : formData.departureTime,
-      arrivalTime : formData.arrivalTime,
-    });
+
+      sendFlightUpdate({
+        id: flight.id,
+        status: formData.status,
+        to: formData.to,
+        from: formData.from,
+        departureTime: formData.departureTime,
+        arrivalTime: formData.arrivalTime,
+      });
     } else {
       data1 = await addflight(
         formData.flightName,
@@ -706,7 +704,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     stompClient = new Client({
-      webSocketFactory: () => new SockJS(" http://localhost:8080/ws"),
+      webSocketFactory: () => new SockJS(" https://makemytour-5axz.onrender.com/ws"),
 
       onConnect: () => {
         console.log("Connected ✅");
