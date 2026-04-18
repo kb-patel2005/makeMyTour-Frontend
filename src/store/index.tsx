@@ -34,7 +34,7 @@ type FlightState = {
   seatMatrix: boolean[][] | null;
 };
 
-export const postNotification = createAsyncThunk<any,NotificationPayload>("notifications/postNotification", async (payload, { rejectWithValue }) => {
+export const postNotification = createAsyncThunk<any, NotificationPayload>("notifications/postNotification", async (payload, { rejectWithValue }) => {
   try {
     const token = localStorage.getItem("Authorization");
 
@@ -73,7 +73,7 @@ export const addNotificationAsync = createAsyncThunk<
       }
     );
 
-    const ids = await res.json(); 
+    const ids = await res.json();
 
     const results = await Promise.all(
       ids.map((id: string) => getNotificationById(id))
@@ -155,7 +155,7 @@ const flightSlice = createSlice({
       state.quantity = action.payload;
     },
     setSeatmatrix: (state, action: PayloadAction<boolean[][]>) => {
-      state.seatMatrix = action.payload.map((row) => [...row]);
+      state.seatMatrix = action.payload.map(row => [...row]);
     },
     updateFlight: (state, action: PayloadAction<any>) => {
       const newFlight = action.payload;

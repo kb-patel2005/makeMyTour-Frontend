@@ -62,8 +62,9 @@ export default function SeatsPage() {
   const [mySeats, setMySeats] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
   const seatLabels = ["A", "B", "C", "D", "E", "F"];
+
   useEffect(() => {
-    if (!flightState) return;
+    if (!flightState || seatMatrix) return;
 
     const updatedSeats =
       seatTypeRaw?.toLowerCase().startsWith("b")
@@ -80,7 +81,7 @@ export default function SeatsPage() {
   const handleClick = (row: number, col: number) => {
     const label = `${row + 1}${seatLabels[col]}`;
     const updated = seatMatrix.map((r: boolean[]) => [...r]);
-    if (updated[row][col]) return;
+    if (updated[row][col] && !mySeats.includes(label)) return;
     updated[row][col] = true;
     dispatch(setSeatmatrix(updated));
     setMySeats((prev) =>
@@ -125,6 +126,7 @@ export default function SeatsPage() {
       arrivalTime: flightState.arrivalTime,
       delayReason: null,
     });
+    const updatedMatrix = JSON.parse(JSON.stringify(seatMatrix));
     localStorage.setItem("sm", JSON.stringify(seatMatrix))
     sendFlightUpdate({
       id: flightState.id,
@@ -134,7 +136,7 @@ export default function SeatsPage() {
       departureTime: flightState.departureTime,
       arrivalTime: flightState.arrivalTime,
       seatType: seatTypeRaw,
-      seatsMatrix: seatMatrix
+      seatsMatrix: updatedMatrix
     });
     router.push("/");
   };

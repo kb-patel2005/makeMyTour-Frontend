@@ -31,6 +31,7 @@ export type FlightUpdateRequest = {
 export default function SocketProvider() {
   const dispatch = useDispatch<AppDispatch>();
   const seatType = useSelector((state: any) => state.flights.seatType);
+  const flightState = useSelector((state:any) => state.flights.flight?.[0])
 
   const seatTypeRef = useRef(seatType);
 
@@ -51,9 +52,9 @@ export default function SocketProvider() {
           data.seatType &&
           currentSeatType &&
           data.seatType.charAt(0).toLowerCase() ===
-            currentSeatType.charAt(0).toLowerCase()
+          currentSeatType.charAt(0).toLowerCase()
         ) {
-          if (data.seatsMatrix) {
+          if (data.id === flightState?.id && data.seatsMatrix) {
             dispatch(setSeatmatrix(data.seatsMatrix));
           }
         }
@@ -74,6 +75,6 @@ export default function SocketProvider() {
     });
 
     return () => disconnectSocket();
-  }, []); 
+  }, []);
   return null;
 }
