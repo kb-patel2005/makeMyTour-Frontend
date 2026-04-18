@@ -5,6 +5,7 @@ import HotelAllimages from "../HotelAllimages";
 import HotelRoom from "../HotelRoom";
 import { useDispatch } from "react-redux";
 import { setHotels, setRoom } from "@/store";
+import Reviews from "@/components/Reviews";
 
 export default function HotelCard() {
   const router = useRouter();
@@ -75,7 +76,7 @@ export default function HotelCard() {
               </div>
             </div>
           </div>
-          {/* <Reviews id={id as string} /> */}
+          <Reviews id={id as string} reviewType="hotel"/>
         </div>
       )}
     </div>

@@ -1,6 +1,8 @@
 "use client";
 
+import { fetchflightReviews, fetchHotelReviews } from "@/api";
 import ReplyBox from "./ReplyBox";
+import { useEffect, useState } from "react";
 
 type Reply = {
   userId?: string;
@@ -23,7 +25,28 @@ type Review = {
   userId: string;
 };
 
-export default function Reviews({ review }: { review: Review[] }) {
+export default function Reviews({ id, reviewType }: { id: string, reviewType: string }) {
+
+  const [review, setReviews] = useState<Review[] | []>([]);
+  const [choice, setChoice] = useState("DESC");
+
+
+  useEffect(() => {
+    const fetchreviews = async () => {
+      try {
+        if (reviewType == "flight") {
+          const reviews = await fetchflightReviews(id, choice);
+          setReviews(reviews);
+        }else{
+          const reviews = await fetchHotelReviews(id, choice);
+          setReviews(reviews)
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchreviews()
+  }, [choice])
 
   const total = review.length;
   const averageRating = total ? review.reduce((sum, r) => sum + r.rating, 0) / total : 0;
@@ -59,7 +82,12 @@ export default function Reviews({ review }: { review: Review[] }) {
           ))}
         </div>
       </div>
-
+      <div className="w-full flex">
+        <select className="w-[25px] items-end" onChange={(e) => setChoice(e.target.value)}>
+          <option value="DESC">Top rated</option>
+          <option value="Latest">Latest</option>
+        </select>
+      </div>
       <div className="space-y-4">
         {review.length === 0 && (
           <p className="text-gray-500">No reviews yet</p>
@@ -104,7 +132,7 @@ export default function Reviews({ review }: { review: Review[] }) {
             ) : null}
 
             <div className="text-sm text-gray-600">
-              <div><ReplyBox trigger={<><div>📝 replies</div></>} review={r}/></div>
+              <div><ReplyBox trigger={<><div>📝 replies</div></>} review={r} /></div>
               <div> Helpful ({r.helpfulCount})</div>
             </div>
 

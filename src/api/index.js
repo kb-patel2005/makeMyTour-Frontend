@@ -117,10 +117,10 @@ export const getuserbytoken = async () => {
   }
 };
 
-export const fetchHotelReviews = async (hotelId) => {
+export const fetchHotelReviews = async (hotelId,choice) => {
   try {
     console.log(hotelId)
-    const res = await axios.post(`${BACKEND_URL}/api/get/hotels/${hotelId}/reviews`);
+    const res = await axios.post(`${BACKEND_URL}/api/get/hotels/${hotelId}/reviews?orderBy=${choice}`);
 
     const data = res.data;
     return data;
@@ -129,9 +129,9 @@ export const fetchHotelReviews = async (hotelId) => {
   }
 }
 
-export const fetchflightReviews = async (flightId) => {
+export const fetchflightReviews = async (flightId,choice) => {
   try {
-    const url = `${BACKEND_URL}/api/get/flight/${flightId}/reviews?orderBy=DESC`
+    const url = `${BACKEND_URL}/api/get/flight/${flightId}/reviews?orderBy=${choice}`
     const res = await axios.get(url)
     const data = res.data;
     return data;

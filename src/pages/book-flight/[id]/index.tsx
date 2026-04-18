@@ -313,7 +313,10 @@ const BookFlightPage = () => {
             <h1>Reviews</h1>
 
             <div className="mt-6">
-              <Reviews review={reviews} />
+              <Reviews 
+              // review={reviews}
+              reviewType="flight" 
+              id={id as string}/>
               <Chart data={flight.priceHistory || []} />
               {fetchedHotel.length > 0 && (
                 <Reccomendation hotels={fetchedHotel} />
