@@ -81,7 +81,7 @@ export default function SeatsPage() {
   const handleClick = (row: number, col: number) => {
     const label = `${row + 1}${seatLabels[col]}`;
     const updated = seatMatrix.map((r: boolean[]) => [...r]);
-    if (updated[row][col] && !mySeats.includes(label)) return;
+    if (updated[row][col]) return;
     updated[row][col] = true;
     dispatch(setSeatmatrix(updated));
     setMySeats((prev) =>
