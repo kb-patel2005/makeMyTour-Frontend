@@ -64,17 +64,17 @@ export default function SeatsPage() {
   const seatLabels = ["A", "B", "C", "D", "E", "F"];
 
   useEffect(() => {
-    if (!flightState || seatMatrix) return;
+    if (flightState?.id && !seatMatrix) {
+      const initial =
+        seatTypeRaw?.toLowerCase().includes("b")
+          ? flightState.bussinesseats
+          : flightState.economicseats;
 
-    const updatedSeats =
-      seatTypeRaw?.toLowerCase().startsWith("b")
-        ? flightState.bussinesseats
-        : flightState.economicseats;
-
-    if (updatedSeats) {
-      dispatch(setSeatmatrix(updatedSeats));
+      if (initial) {
+        dispatch(setSeatmatrix([...initial]));
+      }
     }
-  }, [flightState, seatTypeRaw]);
+  }, [flightState]);
 
   const type = seatTypeRaw?.toLowerCase().includes("econom") ? "economy" : "business";
 

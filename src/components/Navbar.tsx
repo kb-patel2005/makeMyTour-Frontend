@@ -50,7 +50,6 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center h-16">
         
-        {/* Logo */}
         <Link href={"/"}>
           <div className="flex items-center space-x-2">
             <Plane className="w-7 h-7 text-red-500" />
@@ -62,7 +61,6 @@ const Navbar = () => {
 
         <div className="flex-1" />
 
-        {/* ✅ MOBILE MENU BUTTON */}
         <div className="md:hidden">
           <Menu
             className="w-7 h-7 cursor-pointer"
@@ -70,7 +68,6 @@ const Navbar = () => {
           />
         </div>
 
-        {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-8">
           {user ? (
             <>
@@ -121,7 +118,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* MOBILE SIDEBAR */}
       <div
         className={`fixed top-0 right-0 h-full w-72 bg-white shadow-lg transform transition-transform duration-300 z-50
         ${openMenu ? "translate-x-0" : "translate-x-full"}`}
@@ -190,7 +186,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* BACKDROP */}
       {openMenu && (
         <div
           className="fixed inset-0 bg-black/40 z-40"

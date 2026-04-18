@@ -314,7 +314,6 @@ const BookFlightPage = () => {
 
             <div className="mt-6">
               <Reviews 
-              // review={reviews}
               reviewType="flight" 
               id={id as string}/>
               <Chart data={flight.priceHistory || []} />
