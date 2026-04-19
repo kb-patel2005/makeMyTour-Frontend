@@ -17,17 +17,15 @@ export const connectSocket = ({
     webSocketFactory: () => new SockJS(" https://makemytour-5axz.onrender.com/ws"),
     onConnect: () => {
       console.log("✅ SOCKET CONNECTED");
+      
       if (onHotel) {
         client?.subscribe("/topic/hotels", (msg) => {
-          console.log("📡 HOTEL:", msg.body);
           onHotel(JSON.parse(msg.body));
         });
       }
 
       if (onFlight) {
         client?.subscribe("/topic/flights", (msg) => {
-          console.log("✈️ FLIGHT:", msg.body);
-          alert(msg.body)
           onFlight(JSON.parse(msg.body));
         });
       }

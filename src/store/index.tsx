@@ -159,15 +159,30 @@ const flightSlice = createSlice({
     },
     updateFlight: (state, action: PayloadAction<any>) => {
       const newFlight = action.payload;
-
-      const index = state.flight.findIndex((f) => f.id === newFlight.id);
-      if (index === -1) return;
-
-      state.flight[index] = {
-        ...state.flight[index],
-        ...newFlight,
-      };
-    },
+      if (newFlight.seatsMatrix) {
+        const index = state.flight.findIndex((f) => f.id === newFlight.id);
+        
+        if (index === -1) return;
+        const currentFlight = state.flight[index];
+        let updatedFlight = {
+          ...currentFlight,
+          ...newFlight,
+        };
+        if (newFlight.seatType) {
+          if (newFlight.seatType.toLowerCase().startsWith("b")) {
+            updatedFlight.bussinesseats = newFlight.seatsMatrix;
+          } else {
+            updatedFlight.economicseats = newFlight.seatsMatrix;
+          }
+        }
+        state.flight[index] = updatedFlight;
+      }else{
+        state.flight = state.flight?.map((f:any)=>{
+          if(newFlight.id != f.id) return f;
+          return {...f,status:newFlight.status, delayReason: newFlight.delayReason}
+        })
+      }
+    }
   },
 });
 

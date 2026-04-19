@@ -57,18 +57,18 @@ export default function FlightCard({ flight }: { flight: Flight }) {
       )}
       <div className="flex justify-between items-center">
         <p className="text-red-500 text-sm mb-2">
-          seat Type: {flight.seatType}
+          seat Type: {flight?.seatType}
         </p>
         <p className=" text-sm mb-2">
           <div className="flex gap-2 items-center">
-          seats:   {flight.seats.map((e) =>(
+          seats:   {flight.seats?.map((e) =>(
             <div className="p-2 rounded-full shadow-md">{e}</div>)
           )}
           </div>
         </p>
       </div>
       <p>
-        Total price: {flight.totalPrice}
+        Total price: {flight?.totalPrice}
       </p>
       {/* <div className="flex justify-between items-center mt-3">
         <p className="text-lg font-bold">₹{flight.price}</p>

@@ -10,6 +10,7 @@ export default function Dashboard() {
 
   const dispatch = useDispatch();
   const flights = useSelector((state: any) => state.flights.flight);
+  const [isdashFlight, setdashFlight] = useState(false);
 
   useEffect(() => {
     const fetchFlights = async () => {
@@ -22,6 +23,7 @@ export default function Dashboard() {
       const data = res.data;
       console.log("data",data);
       dispatch(setFlight(data));
+      setdashFlight(true)
       console.log(flights)
     };
 
