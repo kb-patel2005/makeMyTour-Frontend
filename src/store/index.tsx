@@ -9,8 +9,8 @@ const BACKEND_URL = "https://makemytour-5axz.onrender.com";
 
 type Message = {
   message: string;
-  updatedDate: string;
-  dateTime: string;
+  updatedDate: Date;
+  dateTime: Date;
 };
 
 type NotificationPayload = {
@@ -42,7 +42,7 @@ export const postNotification = createAsyncThunk<any, NotificationPayload>("noti
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(payload),
     });

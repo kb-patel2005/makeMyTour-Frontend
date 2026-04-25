@@ -8,8 +8,8 @@ type NotificationPayload = {
   entityId: string;
   messages: {
     message: string;
-    updatedDate: string;
-    dateTime: string;
+    updatedDate: Date;
+    dateTime: Date;
   };
 };
 
@@ -58,8 +58,8 @@ export default function SocketProvider() {
           entityId: data.id,
           messages: {
             message: `Flight ${data.id} | ${data.from}→${data.to} status changed to ${data.status}`,
-            updatedDate: new Date(data.departureTime).toISOString(),
-            dateTime: new Date().toISOString(),
+            updatedDate: new Date(data.departureTime),
+            dateTime: new Date(),
           },
         };
 
