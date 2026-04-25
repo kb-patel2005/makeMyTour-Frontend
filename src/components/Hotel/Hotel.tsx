@@ -39,7 +39,6 @@ const HotelList = ({ onSelect }: any) => {
           <TableRow>
             <TableHead>Hotel Name</TableHead>
             <TableHead>Location</TableHead>
-            <TableHead>Price/Night</TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -49,7 +48,6 @@ const HotelList = ({ onSelect }: any) => {
               <TableRow key={hotel._id}>
                 <TableCell>{hotel.hotelName}</TableCell>
                 <TableCell>{hotel.location}</TableCell>
-                <TableCell>${hotel.pricePerNight}</TableCell>
                 <TableCell>
                   <Button onClick={() => onSelect(hotel)}>Edit</Button>
                 </TableCell>
