@@ -304,7 +304,7 @@ function HotelForm({ id }: { id?: string }) {
         await axios.put(`https://makemytour-5axz.onrender.com/hotel/${id}`, formData);
         alert("Hotel updated");
       } else {
-        await axios.post(`https://makemytour-5axz.onrender.com/hotel`, formData);
+        await axios.post(`https://makemytour-5axz.onrender.com/admin/hotel`, formData);
         alert("Hotel created");
       }
     } catch (err) {
