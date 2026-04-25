@@ -746,7 +746,7 @@ export default function AdminDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FlightList onSelect={setSelectedFlight} />
                 <AddEditFlight flight={selectedFlight} />
               </div>
@@ -762,7 +762,7 @@ export default function AdminDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <HotelList onSelect={setSelectedHotel} />
                 {/* <AddEditHotel hotel={selectedHotel} />
                  */}
