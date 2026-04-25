@@ -299,7 +299,7 @@ function HotelForm({ id }: { id?: string }) {
       });
     });
 
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Authorization");
 
     try {
       if (id) {
