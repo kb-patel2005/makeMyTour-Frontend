@@ -303,10 +303,9 @@ function HotelForm({ id }: { id?: string }) {
 
     try {
       if (id) {
-        await axios.put(`https://makemytour-5axz.onrender.com/hotel/${id}`, formData, {
+        await axios.put(`https://makemytour-5axz.onrender.com/admin/hotel/${id}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`
-            // "Authorization": `Bearer ${token}`
           }
         });
         alert("Hotel updated");
@@ -314,7 +313,6 @@ function HotelForm({ id }: { id?: string }) {
         await axios.post(`https://makemytour-5axz.onrender.com/admin/hotel`, formData, {
           headers: {
             Authorization: `Bearer ${token}`
-            // "Authorization": `Bearer ${token}`
           }
         });
         alert("Hotel created");
