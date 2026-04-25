@@ -295,7 +295,7 @@ function HotelForm({ id }: { id?: string }) {
 
     hotel.rooms.forEach((room, i) => {
       room.images.forEach((file) => {
-        formData.append(`files_${i}`, file);
+        formData.append(`files`, file);
       });
     });
 
