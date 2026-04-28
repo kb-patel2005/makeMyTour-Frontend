@@ -95,8 +95,7 @@ const getNotificationById = async (id: string) => {
       },
     });
 
-    const data = await res.json();
-    return data;
+    return await res.json();
   } catch (err) {
     console.error(err);
   }
@@ -207,8 +206,9 @@ const notificationSlice = createSlice({
       })
       .addCase(addNotificationAsync.fulfilled, (state, action) => {
         action.payload.forEach((res: any) => {
+          alert(JSON.stringify(res));
           if (res?.messages) {
-            state.notifications.unshift(res.messages);
+            state.notifications.unshift(...res.messages);
           }
         });
       });
