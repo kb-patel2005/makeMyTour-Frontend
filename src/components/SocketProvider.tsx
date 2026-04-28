@@ -63,7 +63,7 @@ export default function SocketProvider() {
           },
         };
 
-        if (!currentSeatType?.trim()) {
+        if (data.seatsMatrix == null ) {
           dispatch(postNotification(payload));
         }
       },
