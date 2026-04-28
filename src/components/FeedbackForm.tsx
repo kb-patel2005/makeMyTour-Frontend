@@ -48,7 +48,7 @@ export default function FeedbackForm({ bookingId, userId, type }: { bookingId: s
 
     try {
       const token = localStorage.getItem("Authorization")
-      const url = type == "hotel" ? ` http://localhost:8080/reply/hotels/${bookingId}/reviews` : ` http://localhost:8080/reply/flights/${bookingId}/reviews`;
+      const url = type == "hotel" ? ` https://makemytour-5axz.onrender.com/reply/hotels/${bookingId}/reviews` : ` https://makemytour-5axz.onrender.com/reply/flights/${bookingId}/reviews`;
       const res = await axios.post(url, formData,
         {
           headers: {
