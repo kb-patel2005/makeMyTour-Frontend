@@ -98,7 +98,7 @@ export default function Reviews({ id, reviewType }: { id: string, reviewType: st
 
             <div className="flex justify-between">
               <div className="text-sm text-gray-500">
-                {r.createdAt}
+                {r.createdAt ? new Date(r.createdAt).toLocaleDateString() : ""}
               </div>
             </div>
 
@@ -114,7 +114,6 @@ export default function Reviews({ id, reviewType }: { id: string, reviewType: st
                 {r.photos.map((img, i) => (
                   <img
                     key={i}
-                    // src={`data:image/jpeg;base64,${img}`}
                     src={`data:image/jpeg;base64,${img?.data}`}
                     className="w-20 h-20 object-cover rounded"
                   />
