@@ -121,14 +121,6 @@ export default function Home() {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        // const data = await gethotel();
-        // sethotel([...data]);
-        // const flightdata = await getflight();
-        // setflight(flightdata);
-        // const historydata = await recommandFlights();
-        // setRecommandedFlights([...historydata]);
-        // const historydatahotel = await recommandHotels();
-        // setRecommandedHotels([...historydatahotel]);
         const token = localStorage.getItem("Authorization");
 
         const [hotelData, flightData, recFlights, recHotels] =

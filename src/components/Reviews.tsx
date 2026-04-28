@@ -82,8 +82,8 @@ export default function Reviews({ id, reviewType }: { id: string, reviewType: st
           ))}
         </div>
       </div>
-      <div className="w-full flex">
-        <select className="w-[450px] items-end" onChange={(e) => setChoice(e.target.value)}>
+      <div className="w-full border border-2 flex">
+        <select className="w-[250px] items-end" onChange={(e) => setChoice(e.target.value)}>
           <option value="DESC">Top rated</option>
           <option value="Latest">Latest</option>
         </select>
