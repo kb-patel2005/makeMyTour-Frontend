@@ -114,7 +114,8 @@ export default function Reviews({ id, reviewType }: { id: string, reviewType: st
                 {r.photos.map((img, i) => (
                   <img
                     key={i}
-                    src={`data:image/jpeg;base64,${img}`}
+                    // src={`data:image/jpeg;base64,${img}`}
+                    src={`data:image/jpeg;base64,${img?.data}`}
                     className="w-20 h-20 object-cover rounded"
                   />
                 ))}
